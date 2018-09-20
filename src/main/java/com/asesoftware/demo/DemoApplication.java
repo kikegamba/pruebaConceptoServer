@@ -25,4 +25,6 @@ public class DemoApplication {
             repository.findAll().forEach(System.out::println);
         };
     }
+	
+	
 }
