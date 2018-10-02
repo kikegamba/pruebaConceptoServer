@@ -11,4 +11,4 @@ phases:
       - mvn package
 artifacts:
   files:
-    - targetokun/pruebaConceptoServer-0.0.1-SNAPSHOT.jar
+    - target/carList.jar
