@@ -1,16 +1,25 @@
-version: 0.1
-phases: 
-  build: 
-    commands: 
-      - "echo Build started on `date`"
-      - "echo $CODEBUILD_SRC_DIR"
-      - "mvn test"
-  post_build: 
-    commands: 
-      - "echo Build completed on `date`"
-      - "mvn package"
-artifacts: 
-  files: 
-    - target/demo-0.0.1-SNAPSHOT.jar
-discard-paths: yes
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/fargate-checkin
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - echo $IMAGE_TAG
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Starting Java Build...
+      - mvn clean package docker:build -DpushImageTag
+  post_build:
+    commands:
+      - echo Writing image definitions file...
+      - echo $REPOSITORY_URI
+      - echo $IMAGE_TAG
+      - printf '[{"name":"fetch-booking-container","imageUri":"XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/fetch-booking:latest"}]' > imagedefinitions.json
+artifacts:
+  files:
+    - target/imagedefinitions.json
 
