@@ -74,7 +74,7 @@
       <imageName>886236829342.dkr.ecr.us-east-2.amazonaws.com/${project.artifactId}</imageName>
       <baseImage>java</baseImage>
       <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-      <registryUrl>XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com</registryUrl>
+      <registryUrl>479659824361.dkr.ecr.us-east-2.amazonaws.com</registryUrl>
       <resources>
         <resource>
           <targetPath>/</targetPath>
