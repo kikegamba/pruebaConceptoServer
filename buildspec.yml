@@ -2,12 +2,13 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws --version
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/fargate-checkin
-      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - echo $IMAGE_TAG
+- "echo Logging in to Amazon ECR..."
+- "aws --version"
+- "$(aws ecr get-login --no-include-email --region us-east-2)"
+- REPOSITORY_URI=479659824361.dkr.ecr.us-east-2.amazonaws.com/fargate-checkin
+- "IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)"
+- "echo $IMAGE_TAG"
+
   build:
     commands:
       - echo Build started on `date`
@@ -18,7 +19,7 @@ phases:
       - echo Writing image definitions file...
       - echo $REPOSITORY_URI
       - echo $IMAGE_TAG
-      - printf '[{"name":"fetch-booking-container","imageUri":"XXXXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com/fetch-booking:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"fetch-booking-container","imageUri":"479659824361.dkr.ecr.us-east-2.amazonaws.com/fetch-booking:latest"}]' > imagedefinitions.json
 artifacts:
   files:
     - imagedefinitions.json
