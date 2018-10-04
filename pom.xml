@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.asesoftware</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>prueba-concepto-repository</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -71,7 +71,7 @@
     <artifactId>docker-maven-plugin</artifactId>
     <version>1.0.0</version>
     <configuration>
-      <imageName>886236829342.dkr.ecr.us-east-2.amazonaws.com/${project.artifactId}</imageName>
+      <imageName>479659824361.dkr.ecr.us-east-2.amazonaws.com/${project.artifactId}</imageName>
       <baseImage>java</baseImage>
       <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
       <registryUrl>479659824361.dkr.ecr.us-east-2.amazonaws.com</registryUrl>
