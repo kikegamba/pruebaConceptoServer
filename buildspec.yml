@@ -18,7 +18,7 @@ phases:
       - echo Writing image definitions file...
       - echo $REPOSITORY_URI
       - echo $IMAGE_TAG
-      - printf '[{"name":"prueba-concepto-container","imageUri":"479659824361.dkr.ecr.us-east-2.amazonaws.com/prueba-concepto-container:latest"}]' > imagedefinitions.json
+      - printf '[{"name":"prueba-concepto-container","imageUri":"479659824361.dkr.ecr.us-east-2.amazonaws.com/prueba-concepto-repository:latest"}]' > imagedefinitions.json
 artifacts:
   files:
     - imagedefinitions.json
