@@ -1,0 +1,11 @@
+FROM sonarqube:latest
+
+ENV SONARQUBE_JDBC_USERNAME=sonar \
+SONARQUBE_JDBC_PASSWORD=sonar \
+SONARQUBE_JDBC_URL=jdbc:mysql://sonar-qube-db.ci89wxl14zc1.us-east-1.rds.amazonaws.com:3306/sonar?useSSL=false&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance
+
+RUN wget "https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-5.7.0.15470.jar" \ && wget "https://sonarsource.bintray.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-4.2.1.6529.jar" \ && wget "https://sonarsource.bintray.com/Distribution/sonar-groovy-plugin/sonar-groovy-plugin-1.4.jar" \ && mv *.jar $SONARQUBE_HOME/extensions/plugins \ && ls -lah $SONARQUBE_HOME/extensions/plugins
+
+EXPOSE 9000
+
+EXPOSE 9092
