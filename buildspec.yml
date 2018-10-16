@@ -16,8 +16,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Starting Java Build...
-      - wget --user=admin --ask-password https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip
+      - echo Starting Java Build...	 
+      - wget --no-check-certificate http://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip
       - unzip sonar-scanner-cli-3.0.3.778-linux.zip
       - export PATH=$PATH:./sonar-scanner-3.0.3.778-linux/bin/
       - mvn clean package docker:build -DpushImageTag
