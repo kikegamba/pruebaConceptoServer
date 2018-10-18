@@ -19,6 +19,7 @@ phases:
       - echo Starting Java Build...	 
       - echo $SONARQUBE_TOKEN
       - echo $SONARQUBE_ENDPOINT
+      -$ docker network ls
       - sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
       - unzip sonar-scanner-cli-3.2.0.1227-linux.zip
       - export PATH=$PATH:./sonar-scanner-3.2.0.1227-linux/bin
