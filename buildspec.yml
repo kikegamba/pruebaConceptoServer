@@ -25,6 +25,7 @@ phases:
       - ifconfig -a
       - echo "sonar.host.url=http://ec2-18-206-161-84.compute-1.amazonaws.com \n sonar.scm.disabled=true" >> ./sonar-scanner-3.2.0.1227-linux/conf/sonar-scanner.properties  
       - sonar-scanner -v 
+      - netstat
       - mvn clean package docker:build -DpushImageTag
       - ls -l
       - sonar-scanner -X -Dsonar.login=admin -Dsonar.password=2530985we
