@@ -22,6 +22,8 @@ phases:
       - sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
       - unzip sonar-scanner-cli-3.2.0.1227-linux.zip
       - export PATH=$PATH:./sonar-scanner-3.2.0.1227-linux/bin
+      - sudo ufw status
+      - sudo ufw disable
       - ifconfig -a
       - echo "sonar.host.url=http://ec2-18-206-161-84.compute-1.amazonaws.com \n sonar.scm.disabled=true" >> ./sonar-scanner-3.2.0.1227-linux/conf/sonar-scanner.properties  
       - sonar-scanner -v 
