@@ -22,6 +22,7 @@ phases:
       - sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
       - unzip sonar-scanner-cli-3.2.0.1227-linux.zip
       - export PATH=$PATH:./sonar-scanner-3.2.0.1227-linux/bin
+      - ifconfig -a
       - echo "sonar.host.url=http://ec2-18-206-161-84.compute-1.amazonaws.com" >> ./sonar-scanner-3.2.0.1227-linux/conf/sonar-scanner.properties  
       - sonar-scanner -v 
       - mvn clean package docker:build -DpushImageTag
