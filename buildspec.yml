@@ -27,7 +27,7 @@ phases:
       - sonar-scanner -v 
       - mvn clean package docker:build -DpushImageTag
       - ls -l
-      - sonar-scanner -Dsonar.login=admin -Dsonar.password=2530985we
+      - sonar-scanner -X -Dsonar.login=admin -Dsonar.password=2530985we
   post_build:
     commands:
       - echo Writing image definitions file...
