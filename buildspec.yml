@@ -15,22 +15,15 @@ phases:
      - "echo $IMAGE_TAG"
   build:
     commands:
-      - echo Build started on `date`
-      - echo Starting Java Build...	 
-      - echo $SONARQUBE_TOKEN
-      - echo $SONARQUBE_ENDPOINT
-      - docker network ls
+      - echo Compilacion iniciada en`date`
+      - echo Iniciando Java Build...	 
       - sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip
       - unzip sonar-scanner-cli-3.2.0.1227-linux.zip
       - export PATH=$PATH:./sonar-scanner-3.2.0.1227-linux/bin
-      - iptables -L -n
-      - iptables -P FORWARD ACCEPT
-      - ifconfig -a
       - echo "sonar.host.url=http://ec2-18-206-161-84.compute-1.amazonaws.com \n sonar.scm.disabled=true" >> ./sonar-scanner-3.2.0.1227-linux/conf/sonar-scanner.properties  
       - sonar-scanner -v 
-      - netstat
       - mvn clean package docker:build -DpushImageTag
-      - ls -l
+      - echo Analisis estatico de codigo iniciado
       - sonar-scanner -X -Dsonar.login=admin -Dsonar.password=2530985we
   post_build:
     commands:
