@@ -27,7 +27,7 @@ phases:
       - sonar-scanner -X -Dsonar.login=$LOGIN -Dsonar.password=$PASSWORD
   post_build:
     commands:
-      - echo Writing image definitions file...
+      - echo Escribiendo archivo imagedefinitions.json...
       - echo $REPOSITORY_URI
       - echo $IMAGE_TAG
       - printf '[{"name":"prueba-concepto-container","imageUri":"479659824361.dkr.ecr.us-east-2.amazonaws.com/prueba-concepto-repository:latest"}]' > imagedefinitions.json
